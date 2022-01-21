@@ -300,11 +300,18 @@ ghdl-gcc -a *.vhd
 ```bash
 ghdl-gcc -e testbench
 ```
-- use the entitie's name
+- use the entity's name
 
 ## running the simulation
 
 ```bash
 ghdl-gcc -r testbench --vcd=output.vcd --stop-time=20us
 ```
-- use the entitie's name
+- use the entitiy's name
+
+## gtkwave
+
+```bash
+gtkwave file.vcd
+```
+- quick-tip: use WaveTrace plugin on vscode
