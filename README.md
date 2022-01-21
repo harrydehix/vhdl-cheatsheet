@@ -189,7 +189,33 @@ signal a: 4bit_vector;
 ```
 
 ### std_logic_vector
-represents a vector of bits
+represents a vector of bits (std_logic). does not support arithmetics.
 ```vhdl
 signal a: std_logic_vector(7 downto 0);
+```
+
+#### convert std_logic_vector to unsigned/signed
+```vhdl
+signal a: std_logic_vector(12 downto 0);
+signal b: unsigned(8 downto 0);
+signal c: signed(4 downto 0);
+(...)
+b <= unsigned(a(8 downto 0));
+c <= signed(a(4 downto 0));
+```
+
+### unsigned
+represents a vector of bits (std_logic) supporting unsigned arithmetics.
+```vhdl
+signal a: unsigned(7 downto 0) := 7;  -- default value is 'U' (uninitialised) to every bit
+(...)
+a <= a + 1;
+```
+
+### signed
+represents a vector of bits (std_logic) supporting signed arithmetics.
+```vhdl
+signal a: signed(7 downto 0) := -7;  -- default value is 'U' (uninitialised) to every bit
+(...)
+a <= a + 1;
 ```
