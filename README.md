@@ -25,7 +25,7 @@ entity multiplexer is
     s: in std_logic;
     c: out std_logic    -- no semicolon here!
   );
-end entity;
+end multiplexer;
 ```
 - blackbox view defining inputs and outputs
 
