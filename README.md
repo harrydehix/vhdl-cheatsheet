@@ -86,7 +86,7 @@ begin
   else
     a <= '0';
   end if;
-end
+end process;
 ```
 - processes are only "called" if the value of at least one signal in the sensitivity list changes
 - common assignments (outside a process) are processes too, all processes happen in parallel!
