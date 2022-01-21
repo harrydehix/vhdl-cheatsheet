@@ -257,7 +257,7 @@ a <= a + 1;
 represents an integer. similar to signed/unsigned.
 but you
 - cannot assign binary or hex values
-- cannot use bitwise operators
+- cannot use bitwise/logical operators
 - cannot set the bit count using `(8 downto 0)` or `(0 to 3)`
   - instead you have to use `range value1 to value2`-syntax
 - cannot access single bits
