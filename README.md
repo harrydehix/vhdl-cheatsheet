@@ -275,7 +275,7 @@ signal a_number: integer range -256 to 255;
 
 # ghdl
 
-```batch
+```bash
 sudo apt install ghdl
 sudo apt install ghdl-gcc
 ```
@@ -283,7 +283,7 @@ sudo apt install ghdl-gcc
 # gtkwave
 
 
-```batch
+```bash
 sudo apt install gtkwave
 ```
 
@@ -291,6 +291,12 @@ sudo apt install gtkwave
 
 ## compiling files
 
-```batch
+```bash
 ghdl-gcc -a *.vhd
+```
+
+## generating the simulator
+
+```bash
+ghdl-gcc -e ENTITY_NAME
 ```
