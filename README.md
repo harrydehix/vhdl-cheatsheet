@@ -27,6 +27,37 @@ begin
        b when s = '1';
 end multiplexer_logic;
 ```
+- you cannot write to inputs!
+- you cannot read from outputs!
+- all assignements happen in parallel!
+- use signals to reuse your output!
+
+# signals
+```vhdl
+architecture some_random_architecture of some_random_entity is
+signal internal_signal: std_logic;
+begin
+  internal_signal <= a xor internal_signal;
+  c <= internal_signal;
+end some_random_architecture;
+```
+
+# resuing entities
+```vhdl
+architecture structural of fullAdder is
+signal s1, s2, s3: bit;
+component halfAdder
+  port (
+    x, y : IN Bit;
+    sum, cout : out bit
+  );
+end component;
+begin
+  u1 : halfAdder port map (x, y, s1, s2);
+  u2 : halfAdder port map (s1, cin, sum, s3);
+  cout <= S2 OR S3;
+end structural;
+```
 
 # simple assignments
 ```vhdl
@@ -50,7 +81,7 @@ a <= "11" when b = "00" else
 ```
 
 # with select assignments
-this is equal to the code above
+this is equal to the code above (without fallback)
 ```vhdl
 with b select a <= 
      "11" when "00",
