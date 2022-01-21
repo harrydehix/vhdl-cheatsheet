@@ -29,7 +29,9 @@ end multiplexer_logic;
 ```
 - you cannot write to inputs!
 - you cannot read from outputs!
-- all assignements happen in parallel!
+- all assignements are processes!
+  - all processes happen in parallel!
+  - that means that assigning a value to a signal in one process won't affect another process!
 - use signals to reuse your output!
 
 # signals
@@ -93,7 +95,7 @@ with b select a <=
 # bitwise boolean arithmetic
 works using `not`, `or`, `and`, `xor`, `nand`, `nor`, `xnor` and `()`.
 all operators have the same presendece (!). so just use parenthesis^^.
-e.g.
+**e.g.**
 ```vhdl
 c <= a or (not b) or (f and (g xor h));
 ```
