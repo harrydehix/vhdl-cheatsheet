@@ -1,7 +1,14 @@
 # vhdl-cheatsheet
 summarizes most important things to recognize about vhdl
 
-# using stuff from librarys
+1. [librarys](#librarys)
+2. [entities](#entities)
+3. [architectures](#architectures)
+4. [assignments](#assignments)
+5. [operators](#operators)
+6. [datatypes](#datatypes)
+
+# librarys
 ```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;      -- contains std_logic and std_logic_vector (and more) 
@@ -92,7 +99,7 @@ end if;
 ```
 - elsif and else clauses are optional
 
-# assignements
+# assignments
 
 ## simple assignments
 ```vhdl
