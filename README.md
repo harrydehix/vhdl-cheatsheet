@@ -136,13 +136,14 @@ a <= "11" when b = "00" else
 ```
 
 ## with select assignments
-this is equal to the code above (without fallback)
+this is equal to the code above
 ```vhdl
 with b select a <= 
-     "11" when "00",
+     "11" when "00",  -- use commas here
      "10" when "01",
      "01" when "10",
-     "00" when "11";
+     "00" when "11",
+     "00" when others; -- fallback value
 ```
 
 # operators
