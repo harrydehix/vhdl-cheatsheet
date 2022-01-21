@@ -51,18 +51,18 @@ end multiplexer_logic;
 
 ## reusing entities
 ```vhdl
-architecture structural of fullAdder is
+architecture structural of full_adder is
 signal s1, s2, s3: bit;
-component halfAdder
+component half_adder
   port (
-    x, y : IN Bit;
+    x, y : in bit;
     sum, cout : out bit
   );
 end component;
 begin
-  u1 : halfAdder port map (x, y, s1, s2);
-  u2 : halfAdder port map (s1, cin, sum, s3);
-  cout <= S2 OR S3;
+  u1 : half_adder port map (x, y, s1, s2);
+  u2 : half_adder port map (s1, cin, sum, s3);
+  cout <= s2 OR s3;
 end structural;
 ```
 
