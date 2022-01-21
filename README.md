@@ -89,12 +89,14 @@ end if;
 ```
 - elsif and else clauses are optional
 
-# simple assignments
+# assignements
+
+## simple assignments
 ```vhdl
 a <= '1';
 ```
 
-# when else assignments
+## when else assignments
 ```vhdl
 a <= "11" when b = "00" else
      "10" when b = "01" else
@@ -110,7 +112,7 @@ a <= "11" when b = "00" else
      "00";
 ```
 
-# with select assignments
+## with select assignments
 this is equal to the code above (without fallback)
 ```vhdl
 with b select a <= 
@@ -120,12 +122,14 @@ with b select a <=
      "00" when "11";
 ```
 
-# bitwise boolean arithmetic
+# operators
+
+## logical
 works using `not`, `or`, `and`, `xor`, `nand`, `nor`, `xnor` and `()`.
-all operators have the same presendece (!). so just use parenthesis^^.
+`not` has the highest precendence, all other operators have the same precendence (!). so just use parenthesis^^.
 **e.g.**
 ```vhdl
-c <= a or (not b) or (f and (g xor h));
+c <= a or not b or (f and (g xor h));
 ```
 
 # datatypes
