@@ -8,7 +8,7 @@ use IEEE.std_logic_1164.all;      -- contains std_logic and std_logic_vector (an
 use IEEE.std_logic_unsigned.all;  -- contains unsigned arithmetic
 ```
 
-# creating an entity
+# entities
 ```vhdl
 entity multiplexer is
   port(
@@ -18,8 +18,9 @@ entity multiplexer is
   );
 end entity;
 ```
+- blackbox view defining inputs and outputs
 
-# creating an architecture
+# architectures
 ```vhdl
 architecture multiplexer_logic of multiplexer is
 begin
@@ -27,6 +28,7 @@ begin
        b when s = '1';
 end multiplexer_logic;
 ```
+- whitebox view defining the logic
 - you cannot write to inputs!
 - you cannot read from outputs!
 - all assignements are processes!
@@ -35,17 +37,7 @@ end multiplexer_logic;
   - that means that assigning a value to a signal in one process won't affect another process using that signal (not in the same "loop")!
 - use signals to reuse your output!
 
-# signals
-```vhdl
-architecture some_random_architecture of some_random_entity is
-signal internal_signal: std_logic;
-begin
-  internal_signal <= a xor internal_signal;
-  c <= internal_signal;
-end some_random_architecture;
-```
-
-# reusing entities
+## reusing entities
 ```vhdl
 architecture structural of fullAdder is
 signal s1, s2, s3: bit;
@@ -62,7 +54,18 @@ begin
 end structural;
 ```
 
-# process
+# signals
+```vhdl
+architecture some_random_architecture of some_random_entity is
+signal internal_signal: std_logic;
+begin
+  internal_signal <= a xor internal_signal;
+  c <= internal_signal;
+end some_random_architecture;
+```
+- useful for reusing outputs
+
+# processes
 ```vhdl
 process(clk)
 begin
