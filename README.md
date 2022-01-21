@@ -4,9 +4,11 @@ summarizes most important things to recognize about vhdl
 1. [librarys](#librarys)
 2. [entities](#entities)
 3. [architectures](#architectures)
-4. [assignments](#assignments)
-5. [operators](#operators)
-6. [datatypes](#datatypes)
+4. [signals](#signals)
+5. [processes](#processes)
+6. [assignments](#assignments)
+7. [operators](#operators)
+8. [datatypes](#datatypes)
 
 # librarys
 ```vhdl
