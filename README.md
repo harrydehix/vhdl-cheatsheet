@@ -40,7 +40,7 @@ end multiplexer_logic;
 - whitebox view defining the logic
 - you cannot write to inputs!
 - you cannot read from outputs!
-- all assignements are processes!
+- all assignments are processes!
   - all processes happen in parallel!
   - a signal takes its state at the end of a process!
   - that means that assigning a value to a signal in one process won't affect another process using that signal (not in the same "loop")!
