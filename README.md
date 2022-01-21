@@ -292,5 +292,5 @@ sudo apt install gtkwave
 ## compiling files
 
 ```batch
-ghdl -a *.vhd
+ghdl-gcc -a *.vhd
 ```
