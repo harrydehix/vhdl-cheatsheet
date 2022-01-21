@@ -173,9 +173,9 @@ my_array <= ('0', '1', '0', '1');
 ```
 #### named association
 ```vhdl
-my_array <= (0 => '1', others => '0');
-my_array <= (0 | 3 | 5 => '1', others => '0');
-my_array <= (4 downto 1 => '1', others => '0');
+my_array <= (0 => '1', others => '0');            -- 0000_0001
+my_array <= (0 | 3 | 5 => '1', others => '0');    -- 0010_1001
+my_array <= (4 downto 1 => '1', others => '0');   -- 0001_1110
 ```
 
 ### creating custom vector types
@@ -189,3 +189,7 @@ signal a: 4bit_vector;
 ```
 
 ### std_logic_vector
+represents a vector of bits
+```vhdl
+signal a: std_logic_vector(7 downto 0);
+```
