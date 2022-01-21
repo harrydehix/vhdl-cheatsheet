@@ -45,7 +45,7 @@ begin
 end some_random_architecture;
 ```
 
-# resuing entities
+# reusing entities
 ```vhdl
 architecture structural of fullAdder is
 signal s1, s2, s3: bit;
@@ -61,6 +61,33 @@ begin
   cout <= S2 OR S3;
 end structural;
 ```
+
+# process
+```vhdl
+process(clk)
+begin
+  if(rising_edge(clk) then
+    a <= '1';
+  else
+    a <= '0';
+  end if;
+end
+```
+- processes are only "called" if the value of at least one signal in the sensitivity list changes
+- common assignments (outside a process) are processes too, all processes happen in parallel!
+- signals take their states at the end of a process
+
+## if-statements
+```vhdl
+if (a = '1') or (c > d) then
+  statements;
+elsif condition then
+  statements;
+else
+  statements;
+end if;
+```
+- elsif and else clauses are optional
 
 # simple assignments
 ```vhdl
