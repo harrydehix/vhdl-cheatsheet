@@ -4,8 +4,8 @@ summarizes most important things to recognize about vhdl
 # using stuff from librarys
 ```vhdl
 library IEEE;
-use IEEE.std_logic_1164.all;      -- Enthält wichtige Grundtypen z.B. std_logic 
-use IEEE.std_logic_unsigned.all;  -- Enthält unsigned-Arithmetik
+use IEEE.std_logic_1164.all;      -- contains std_logic and std_logic_vector (and more) 
+use IEEE.std_logic_unsigned.all;  -- contains unsigned arithmetic
 ```
 
 # creating an entity
@@ -14,7 +14,7 @@ entity multiplexer is
   port(
     a, b: in std_logic;
     s: in std_logic;
-    c: out std_logic    -- hier kein Semikolon
+    c: out std_logic    -- no semicolon here!
   );
 end entity;
 ```
