@@ -9,6 +9,9 @@ summarizes most important things to recognize about vhdl
 6. [assignments](#assignments)
 7. [operators](#operators)
 8. [datatypes](#datatypes)
+9. [ghdl](#ghdl)
+10. [gtkwave](#gtkwave)
+11. [testing](#testing)
 
 # librarys
 ```vhdl
@@ -269,3 +272,25 @@ signal a_number: integer range -256 to 255;
 ### converting between std_logic_vector, unsigned, signed and integer
 ![grafik](https://user-images.githubusercontent.com/29947316/150503250-f9886cf0-88f8-4692-9a00-b67a65ed9e9f.png)
 [Source](http://atlas.physics.arizona.edu/~kjohns/downloads/vhdl/VHDL_Lang.pdf)
+
+# ghdl
+
+```batch
+sudo apt install ghdl
+sudo apt install ghdl-gcc
+```
+
+# gtkwave
+
+
+```batch
+sudo apt install gtkwave
+```
+
+# testing
+
+## compiling files
+
+```batch
+ghdl -a *.vhd
+```
