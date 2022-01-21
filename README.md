@@ -47,7 +47,7 @@ end multiplexer_logic;
   - all processes happen in parallel!
   - a signal takes its state at the end of a process!
   - that means that assigning a value to a signal in one process won't affect another process using that signal (not in the same "loop")!
-- use signals to reuse your output!
+- use signals to reuse your "output"!
 
 ## reusing entities
 ```vhdl
@@ -75,7 +75,7 @@ begin
   c <= internal_signal;
 end some_random_architecture;
 ```
-- useful for reusing outputs
+- useful for reusing "outputs"
 
 ## initialising signals
 ```vhdl
