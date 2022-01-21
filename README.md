@@ -14,7 +14,7 @@ summarizes most important things to recognize about vhdl
 ```vhdl
 library IEEE;
 use IEEE.std_logic_1164.all;      -- contains std_logic and std_logic_vector (and more) 
-use IEEE.std_logic_unsigned.all;  -- contains unsigned arithmetic
+use IEEE.numeric_std.all;         -- contains unsigned and signed arithmetics
 ```
 
 # entities
@@ -197,8 +197,8 @@ vectors are array-like one-dimensional collections of signals having the same ty
 signal big_endian : std_logic_vector(0 to 7);
 signal little_endian : std_logic_vector(7 downto 0);
 (...)
-big_endian(0) = '1';      -- results in "1000_0000"
-little_endian(0) = '1';   -- results in "0000_0001"
+big_endian = "0000_0001";     -- results in index 7 having the value '1'
+little_endian = "0000_0001";  -- results in index 0 having the value '0'
 ```
 
 ### assigning arrays
@@ -237,16 +237,6 @@ represents a vector of bits (std_logic). does not support arithmetics.
 signal a: std_logic_vector(7 downto 0);
 ```
 
-#### convert std_logic_vector to unsigned/signed
-```vhdl
-signal a: std_logic_vector(12 downto 0);
-signal b: unsigned(8 downto 0);
-signal c: signed(4 downto 0);
-(...)
-b <= unsigned(a(8 downto 0));
-c <= signed(a(4 downto 0));
-```
-
 ### unsigned
 represents a vector of bits (std_logic) supporting unsigned arithmetics.
 ```vhdl
@@ -262,3 +252,19 @@ signal a: signed(7 downto 0) := -7;  -- default value is 'U' (uninitialised) to 
 (...)
 a <= a + 1;
 ```
+
+### integer
+represents an integer. similar to signed/unsigned.
+but you
+- cannot assign binary or hex values
+- cannot use bitwise operators
+- cannot set the bit count using `(8 downto 0)` or `(0 to 3)`
+  - instead you have to use `range value1 to value2`-syntax
+- cannot access single bits
+```vhdl
+signal a_number: integer range -256 to 255;
+```
+
+### converting between std_logic_vector, unsigned, signed and integer
+![grafik](https://user-images.githubusercontent.com/29947316/150503250-f9886cf0-88f8-4692-9a00-b67a65ed9e9f.png)
+[Source](http://atlas.physics.arizona.edu/~kjohns/downloads/vhdl/VHDL_Lang.pdf)
