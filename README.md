@@ -298,5 +298,13 @@ ghdl-gcc -a *.vhd
 ## generating the simulator
 
 ```bash
-ghdl-gcc -e ENTITY_NAME
+ghdl-gcc -e testbench
 ```
+- use the entitie's name
+
+## running the simulation
+
+```bash
+ghdl-gcc -r testbench --vcd=output.vcd --stop-time=20us
+```
+- use the entitie's name
