@@ -77,6 +77,11 @@ end some_random_architecture;
 ```
 - useful for reusing outputs
 
+## initialising signals
+```vhdl
+signal internal_signal: std_logic := '1';
+``` 
+
 # processes
 ```vhdl
 process(clk)
