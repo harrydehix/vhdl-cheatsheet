@@ -99,6 +99,17 @@ end if;
 ```
 - elsif and else clauses are optional
 
+## case-statements
+```vhdl
+case a is
+  when "00" => b <= "1000";
+  when "01" => b <= "0100";
+  when "10" => b <= "0010";
+  when "11" => b <= "0001";
+  when others => b <= "0000"; -- fallback case
+end case;
+```
+
 # assignments
 
 ## simple assignments
