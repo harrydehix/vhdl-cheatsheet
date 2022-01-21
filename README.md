@@ -157,6 +157,10 @@ with b select a <=
 `not`, `or`, `and`, `xor`, `nand`, `nor` and `xnor`.
 `not` has the highest precendence, all other operators have the same precendence (!). so just use parenthesis^^.
 
+```vhdl
+c <= a or not b or (f and (g xor h));
+```
+
 ## concatentation-operator
 `&` is an operator allowing you to concatenate vectors.
 ```vhdl
@@ -165,11 +169,6 @@ signal b: std_logic_vector(3 downto 0);
 signal c: std_logic_vector(8 downto 0);
 (...)
 c <= a & b;
-```
-
-**e.g.**
-```vhdl
-c <= a or not b or (f and (g xor h));
 ```
 
 # datatypes
