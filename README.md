@@ -31,7 +31,8 @@ end multiplexer_logic;
 - you cannot read from outputs!
 - all assignements are processes!
   - all processes happen in parallel!
-  - that means that assigning a value to a signal in one process won't affect another process!
+  - a signal takes its state at the end of a process!
+  - that means that assigning a value to a signal in one process won't affect another process using that signal!
 - use signals to reuse your output!
 
 # signals
