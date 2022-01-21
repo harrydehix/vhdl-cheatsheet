@@ -107,6 +107,7 @@ else
   statements;
 end if;
 ```
+- can only be used inside processes
 - elsif and else clauses are optional
 
 ## case-statements
@@ -117,6 +118,7 @@ case a is
   when "10" => b <= "0010";
   when "11" => b <= "0001";
   when others => b <= "0000"; -- fallback case
+  -- when others =>; -- commonly used to do "nothing"
 end case;
 ```
 
