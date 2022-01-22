@@ -4,13 +4,8 @@ name: Readme.md to vhdl-cheatsheet.pdf
 
 # Controls when the action will run. 
 on:
-  workflow_dispatch:
-  push:
-    branches: 
-      - master
-    paths:
-      - 'Readme.md'
-      #- '.github/pictures/**'                #Uncomment if u use images in your Readme.md
+  workflow_dispatch: 
+  [push]:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,7 +27,7 @@ jobs:
           images_dir: /.github/pictures     #Uncomment if u use imgges in your Readme.md
           build_html: false
       # Renames Readme.pdf to 'Dokumentation <reponame>.pdf'
-      - run: mv Readme.pdf "$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | tr vhdl-cheatsheet).pdf"
+      - run: mv README.pdf "$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | tr vhdl-cheatsheet).pdf"
       # Commit and push
       - uses: EndBug/add-and-commit@v7.1.1
         with:
