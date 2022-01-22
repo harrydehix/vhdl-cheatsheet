@@ -81,6 +81,7 @@ end some_random_architecture;
 ```vhdl
 signal internal_signal: std_logic := '1';
 ``` 
+- remember: intialization isn't synthesizable!
 
 # processes
 ```vhdl
@@ -205,11 +206,8 @@ vectors are array-like one-dimensional collections of signals having the same ty
 
 **e.g.**
 ```vhdl
-signal big_endian : std_logic_vector(0 to 7);
-signal little_endian : std_logic_vector(7 downto 0);
-(...)
-big_endian = "0000_0001";     -- results in index 7 having the value '1'
-little_endian = "0000_0001";  -- results in index 0 having the value '1'
+signal big_endian : std_logic_vector(0 to 7) := "0000_0001";        -- results in index 7 having the value '1'
+signal little_endian : std_logic_vector(7 downto 0) := "0000_0001"; -- results in index 0 having the value '1'
 ```
 
 ### assigning arrays
