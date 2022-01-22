@@ -12,6 +12,7 @@ summarizes most important things to recognize about vhdl
 9. [ghdl](#ghdl)
 10. [gtkwave](#gtkwave)
 11. [testing](#testing)
+12. [links](#links)
 
 # librarys
 ```vhdl
@@ -403,3 +404,9 @@ ghdl-gcc -r testbench --vcd=output.vcd --stop-time=20us
 gtkwave file.vcd
 ```
 - quick-tip: use WaveTrace plugin on vscode
+
+# links
+
+[VHDL Online Help](https://peterfab.com/ref/vhdl/vhdl_renerta/source/vhd00000.htm)
+[University of Minnesota Duluth PDF](http://atlas.physics.arizona.edu/~kjohns/downloads/vhdl/VHDL_Lang.pdf)
+[VHDL Grundlagen, Universität Ulm](http://www.informatik.uni-ulm.de/ni/Lehre/SS03/ProSemFPGA/VHDL-Grundlagen.pdf)
