@@ -407,6 +407,6 @@ gtkwave file.vcd
 
 # links
 
-[VHDL Online Help](https://peterfab.com/ref/vhdl/vhdl_renerta/source/vhd00000.htm)
-[University of Minnesota Duluth PDF](http://atlas.physics.arizona.edu/~kjohns/downloads/vhdl/VHDL_Lang.pdf)
-[VHDL Grundlagen, Universität Ulm](http://www.informatik.uni-ulm.de/ni/Lehre/SS03/ProSemFPGA/VHDL-Grundlagen.pdf)
+- [VHDL Online Help](https://peterfab.com/ref/vhdl/vhdl_renerta/source/vhd00000.htm)
+- [University of Minnesota Duluth PDF](http://atlas.physics.arizona.edu/~kjohns/downloads/vhdl/VHDL_Lang.pdf)
+- [VHDL Grundlagen, Universität Ulm](http://www.informatik.uni-ulm.de/ni/Lehre/SS03/ProSemFPGA/VHDL-Grundlagen.pdf)
