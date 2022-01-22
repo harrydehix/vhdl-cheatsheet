@@ -5,7 +5,7 @@ name: Readme.md to vhdl-cheatsheet.pdf
 # Controls when the action will run. 
 on:
   workflow_dispatch: 
-  [push]:
+  push:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
