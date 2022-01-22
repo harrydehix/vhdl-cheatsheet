@@ -50,6 +50,87 @@ end multiplexer_logic;
   - that means that assigning a value to a signal in one process won't affect another process using that signal (not in the same "loop")!
 - use signals to reuse your "output"!
 
+## types of architectures
+
+There are three types of architectures. I'll explain them by implementing following 1-mux:
+
+```vhdl
+entity multiplexer is
+  port(
+    a, b: in std_logic;
+    s: in std_logic;
+    c: out std_logic
+  );
+end entity multiplexer;
+```
+
+### 1. structural
+
+"The description of a structural body is based on component instantiation and generate statements."
+
+That means first of all we create a component for each logic gate we need. Then we use these logic gates to exactly define the multiplexer's structure.
+
+![Unbenannt](https://user-images.githubusercontent.com/29947316/150628231-17eb978c-0215-4756-98e2-5dd5e9050c56.PNG)
+
+```vhdl
+architecture structural of multiplexer is
+
+component and_gate
+  port(a, b: in std_logic; c: out std_logic);
+end component;
+component or_gate
+  port(a, b: in std_logic; c: out std_logic);
+end component;
+component not_gate
+  port(a: in std_logic; b: out std_logic);
+end component;
+
+signal s_not: std_logic;
+signal first_and: std_logic;
+signal second_and: std_logic;
+
+begin
+   n1: not_gate port map(s, s_not);
+   a1: and_gate port map(a, s_not, first_and);
+   a2: and_gate port map(b, s, second_and);
+   o1: or_gate port map(first_and, second_and, c);
+end structural;
+```
+
+### 2. dataflow
+"The Dataflow description is built with concurrent signal assignment statements. Each of the statements can be activated when any of its input signals changes its value."
+
+That means we just use simple assignments and logical operators.
+
+
+```vhdl
+architecture dataflow of multiplexer is
+
+begin
+   c <= (a and not s) or (b and s);
+end structural;
+```
+
+### 3. behavioural
+"The architecture body describes only the expected functionality (behavior) of the circuit, without any direct indication as to the hardware implementation. Such description consists only of one or more processes, each of which contains sequential statements."
+
+```vhdl
+architecture behavioural of multiplexer is
+
+begin
+   process(a, b, s)
+   begin
+      if(b and s) then
+        c <= '1';
+      elsif(a and not s) then
+        c <= '1';
+      else
+        c <= '0';
+      end if;
+   end process;
+end structural;
+```
+
 ## reusing entities
 ```vhdl
 architecture structural of full_adder is
