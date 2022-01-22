@@ -108,7 +108,7 @@ architecture dataflow of multiplexer is
 
 begin
    c <= (a and not s) or (b and s);
-end structural;
+end dataflow;
 ```
 
 ### 3. behavioural
@@ -128,7 +128,7 @@ begin
         c <= '0';
       end if;
    end process;
-end structural;
+end behavioural;
 ```
 
 ## reusing entities
