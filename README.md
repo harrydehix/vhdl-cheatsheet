@@ -40,7 +40,8 @@ begin
        b when s = '1';
 end multiplexer_logic;
 ```
-- whitebox view defining the logic
+- whitebox view defining the logic, always belonging to an entity
+- there can be multiple architectures for a single entity
 - you cannot write to inputs!
 - you cannot read from outputs!
 - all assignments are processes!
@@ -53,14 +54,14 @@ end multiplexer_logic;
 ```vhdl
 architecture structural of full_adder is
 signal s1, s2, s3: bit;
-component half_adder
+component half_adder  -- 1. define the reused component's black box view inside the architecture's declarative part
   port (
     x, y : in bit;
     sum, cout : out bit
   );
 end component;
 begin
-  u1 : half_adder port map (x, y, s1, s2);
+  u1 : half_adder port map (x, y, s1, s2);  -- 2. map (input/output) signals to the reused component
   u2 : half_adder port map (s1, cin, sum, s3);
   cout <= s2 OR s3;
 end structural;
@@ -76,6 +77,7 @@ begin
 end some_random_architecture;
 ```
 - useful for reusing "outputs"
+- are declared inside the architecture's declarative part
 
 ## initialising signals
 ```vhdl
