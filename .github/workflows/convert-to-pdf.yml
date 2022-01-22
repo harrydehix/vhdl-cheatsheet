@@ -27,7 +27,7 @@ jobs:
           images_dir: /.github/pictures     #Uncomment if u use imgges in your Readme.md
           build_html: false
       # Renames Readme.pdf to 'Dokumentation <reponame>.pdf'
-      - run: mv README.pdf "$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | tr vhdl-cheatsheet).pdf"
+      - run: mv README.pdf "vhdl-cheatsheet $(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | tr "").pdf"
       # Commit and push
       - uses: EndBug/add-and-commit@v7.1.1
         with:
