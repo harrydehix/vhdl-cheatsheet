@@ -9,7 +9,7 @@ on:
     # Paths can be used to only trigger actions when you have edited certain files, such as a file within the /docs directory
     paths:
       - './**.md'
-      - '/images/**'
+      #- '/images/**'
 
 jobs:
   converttopdf:
@@ -21,12 +21,12 @@ jobs:
         with:
           input_dir: .
           output_dir: .
-          images_dir: ./images
+          #images_dir: ./images
           # for example <img src="./images/file-name.png">
-          image_import: ./images
+          #image_import: ./images
           # Default is true, can set to false to only get PDF files
           build_html: false
       - uses: actions/upload-artifact@v1
         with:
           name: .
-          path: pdf
+          path: .
