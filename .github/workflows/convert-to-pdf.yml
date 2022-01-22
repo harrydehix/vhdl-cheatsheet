@@ -3,6 +3,7 @@
 name: Docs to PDF
 # This workflow is triggered on pushes to the repository.
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
