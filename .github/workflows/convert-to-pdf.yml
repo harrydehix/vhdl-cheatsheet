@@ -1,33 +1,39 @@
-# .github/workflows/convert-to-pdf.yml
+# This is a basic workflow to help you get started with Actions
 
-name: Docs to PDF
-# This workflow is triggered on pushes to the repository.
+name: Readme.md to vhdl-cheatsheet.pdf 
+
+# Controls when the action will run. 
 on:
-  workflow_dispatch:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches:
+    branches: 
       - master
-    # Paths can be used to only trigger actions when you have edited certain files, such as a file within the /docs directory
     paths:
-      - 'doc/**.md'
-      #- 'docs/images/**'
+      - 'Readme.md'
+      #- '.github/pictures/**'                #Uncomment if u use images in your Readme.md
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  converttopdf:
-    name: Build PDF
+  # This workflow contains a single job called "build"
+  checkoutConvertMdToPdfPush:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      # Converts 
       - uses: baileyjm02/markdown-to-pdf@v1
         with:
-          input_dir: doc
-          output_dir: /pdf
-          #images_dir: docs/images
-          # for example <img src="./images/file-name.png">
-          #image_import: ./images
-          # Default is true, can set to false to only get PDF files
+          input_dir: .
+          output_dir: .
+          image_import: /.github/pictures  #Uncomment if u use imgges in your Readme.md
+          images_dir: /.github/pictures     #Uncomment if u use imgges in your Readme.md
           build_html: false
-      - uses: actions/upload-artifact@v1
+      # Renames Readme.pdf to 'Dokumentation <reponame>.pdf'
+      - run: mv Readme.pdf "$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | tr vhdl-cheatsheet).pdf"
+      # Commit and push
+      - uses: EndBug/add-and-commit@v7.1.1
         with:
-          name: doc
-          path: /pdf
+          message: 'generated from Readme.md'
