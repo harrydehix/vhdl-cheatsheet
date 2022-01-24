@@ -121,12 +121,10 @@ architecture behavioural of multiplexer is
 begin
    process(a, b, s)
    begin
-      if(b and s) then
-        c <= '1';
-      elsif(a and not s) then
-        c <= '1';
+      if(s = '1') then
+        c <= b;
       else
-        c <= '0';
+        c <= a;
       end if;
    end process;
 end behavioural;
