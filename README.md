@@ -488,7 +488,7 @@ After that, we need to generate an executable program from our testbench.
 ```bash
 ghdl-gcc -e testbench
 ```
-- use the testbench's entitiy name
+- use the testbench's entity name
 
 ### running the simulation
 
@@ -497,7 +497,7 @@ Finally we can run the simulation. The stop time must be chosen carefully. Since
 ```bash
 ghdl-gcc -r testbench --vcd=output.vcd --stop-time=70ns
 ```
-- use the testbench's entitiy name
+- use the testbench's entity name
 
 ## gtkwave
 
