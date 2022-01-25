@@ -336,6 +336,14 @@ signal a: unsigned(7 downto 0) := 7;  -- default value is 'U' (uninitialised) to
 (...)
 a <= a + 1;
 ```
+if you use arithmetical operators on two unsigned signals, remember that they should have the same bit count!
+```vhdl
+signal a: unsigned(7 downto 0) := 17;
+signal b: unsigned(4 downto 0) := 2;
+(...)
+a <= a + b; -- doesn't work
+a <= a + ("000"&b); -- does work
+```
 
 ### signed
 represents a vector of bits (std_logic) supporting signed arithmetics.
@@ -344,7 +352,14 @@ signal a: signed(7 downto 0) := -7;  -- default value is 'U' (uninitialised) to 
 (...)
 a <= a + 1;
 ```
-
+if you use arithmetical operators on two signed signals, remember that they should have the same bit count!
+```vhdl
+signal a: signed(7 downto 0) := 17;
+signal b: signed(4 downto 0) := 2;
+(...)
+a <= a + b; -- doesn't work
+a <= a + ("000"&b); -- does work
+```
 ### integer
 represents an integer. similar to signed/unsigned.
 but you
