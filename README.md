@@ -377,27 +377,131 @@ sudo apt install gtkwave
 
 # testing
 
-## compiling files
+## introduction to testbenches
+
+To test our entities and their architectures we need _testbenches_. Testbenches are nothing more than entities feeding the entities we want to test with different inputs.
+With the help of a few useful tools, we can create and run a simulation on the basis of our testbench and precisely analyse which inputs have led to which outputs.
+
+Creating testbenches is not an exact science, as there are countless ways to approach it. In the following chapters I'm going to explain one simple practical example. I assume we want to test the following 1mux:
+
+```vhdl
+entity multiplexer is
+  port(
+    a, b: in std_logic;
+    s: in std_logic;
+    c: out std_logic
+  );
+end entity multiplexer;
+```
+
+### the testbench's outer structure
+```vhdl
+entity testbench is
+end entity testbench;
+
+architecture testbench_logic of testbench is
+
+component multiplexer
+  port(
+    a, b: in std_logic;
+    s: in std_logic;
+    c: out std_logic
+  );
+end component;
+
+-- TODO
+
+begin
+  -- TODO
+end testbench_logic;
+```
+- the testbench should be defined in a second file, you do **not** have to import the entity you want to test
+- testbenches have no ports as they generate the input for our entities inside their architecture
+- you have to embed the entity you want to test as component inside the testbench's architecture
+
+### generating input
+
+Generating input is the key concept behind testbenches. First of all we have to determine which inputs are possible.
+
+![grafik](https://user-images.githubusercontent.com/29947316/150932817-575bc180-ecb1-41fe-924f-5bedcb2aea93.png)
+
+The 1mux has 7 different possible input combinations. To generate them, I use an unsigned (integer) having 3 bits (don't forget to import the library!).
+
+```vhdl
+(...)
+signal input: unsigned(2 downto 0) := 0;
+(...)
+```
+
+Now I use a process to count (binary) upwards.
+
+```vhdl
+(...)
+process
+begin
+  input <= input + 1;
+end process;
+(...)
+```
+
+However, as processes are constantly re-executed, this incrementing happens at such a fast rate that it would hardly be visible in our simulation.
+To fix this issue I use the `wait for <time><time unit>` statement. This statement tells our simulation to pause for some time before re-executing the process.
+
+```vhdl
+process
+begin
+  wait for 10ns;
+  input <= input + 1;
+end process;
+```
+
+### mapping our generated input to our component
+
+Now that we have successfully created our input signals, we need to feed them to our component. We accomplish this through port mapping.
+In addition we need to store our component's output, that's why I declare another signal.
+
+```vhdl
+signal input: unsigned(2 downto 0);
+signal output: std_logic; -- new signal storing our component's output
+```
+
+```vhdl
+    (...)
+  end process;
+
+  m1: multiplexer port map(a => input(2), b => input(1), s => input(0), c => output);
+end testbench_logic;
+```
+
+### compiling files
+
+To run our simulation, we first need to compile all the vhdl files involved.
 
 ```bash
 ghdl-gcc -a *.vhd
 ```
 
-## generating the simulator
+### generating the simulator
+
+After that, we need to generate an executable program from our testbench.
 
 ```bash
 ghdl-gcc -e testbench
 ```
-- use the entity's name
+- use the testbench's entitiy name
 
-## running the simulation
+### running the simulation
+
+Finally we can run the simulation. The stop time must be chosen carefully. Since I test 7 different inputs and wait 10ns each time, I simulate 70ns.
 
 ```bash
-ghdl-gcc -r testbench --vcd=output.vcd --stop-time=20us
+ghdl-gcc -r testbench --vcd=output.vcd --stop-time=70ns
 ```
-- use the entitiy's name
+- use the testbench's entitiy name
 
 ## gtkwave
+
+The simulation's results are written to a .vcd file. _gtkwave_ is a simple tool visualizing the results.
 
 ```bash
 gtkwave file.vcd
