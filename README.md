@@ -168,14 +168,14 @@ signal internal_signal: std_logic := '1';
 
 # processes
 ```vhdl
-process(clk)
+process_label : process(clk)
 begin
-  if(rising_edge(clk) then
+  if rising_edge(clk) then
     a <= '1';
   else
     a <= '0';
   end if;
-end process;
+end process process_label;
 ```
 - processes are only "called" if the value of at least one signal in the sensitivity list changes
 - common assignments (outside a process) are processes too, all processes happen in parallel!
