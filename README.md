@@ -465,7 +465,7 @@ To fix this issue I use the `wait for <time><time unit>` statement. This stateme
 ```vhdl
 process
 begin
-  wait for 10ns;
+  wait for 10 ns;
   input <= input + 1;
 end process;
 ```
